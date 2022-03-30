@@ -13,6 +13,7 @@ const STYLES_BUTTON = css`
   font-weight: 600;
   display: inline-flex;
   align-items: center;
+  user-select: none;
 `;
 
 const STYLES_PRIMARY = css`

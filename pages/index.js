@@ -61,7 +61,7 @@ const STYLES_BUTTONS = css`
 
   p {
     font-size: 1.2rem;
-    margin: 1.5rem 0 0 1rem;
+    margin: 1.5rem 0 0 1.6rem;
     line-height: 1.2px;
   }
 `;
