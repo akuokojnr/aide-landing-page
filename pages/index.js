@@ -1,3 +1,5 @@
+import * as Constants from "common/constants";
+
 import { css } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
@@ -11,6 +13,20 @@ const STYLES_SECTION = css`
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   align-items: center;
   min-height: 100vh;
+`;
+
+const STYLES_STATUS = css`
+  color: ${Constants.colors.gray};
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  border: 1.3px solid ${Constants.colors.gray};
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.8rem;
+`;
+
+const STYLES_TITLE_WRAPPER = css`
+  padding: 3rem 0;
 `;
 
 const STYLES_TITLE = css`
@@ -34,7 +50,8 @@ export default function Home() {
     <main css={STYLES_CONTAINER}>
       <section css={STYLES_SECTION}>
         <div>
-          <div>
+          <span css={STYLES_STATUS}>Beta</span>
+          <div css={STYLES_TITLE_WRAPPER}>
             <h3 css={STYLES_TITLE}>A new day for customer support.</h3>
             <h3 css={[STYLES_TITLE, STYLES_SUBTITLE]}>
               Share knowledge <br /> Automate common tasks <br /> Better
