@@ -1,4 +1,7 @@
 import * as Constants from "common/constants";
+import * as SVG from "common/svg";
+
+import Button from "components/Button";
 
 import { css } from "@emotion/react";
 
@@ -32,7 +35,7 @@ const STYLES_TITLE_WRAPPER = css`
 const STYLES_TITLE = css`
   font-size: clamp(2rem, 1.1vw + 1.8rem, 2.8rem);
   font-weight: 700;
-  line-height: 3.6rem;
+  line-height: clamp(2.8rem, 1.1vw + 2.6rem, 3.6rem);
 `;
 
 const STYLES_SUBTITLE = css`
@@ -45,18 +48,55 @@ const STYLES_SUBTITLE = css`
   -webkit-text-fill-color: transparent;
 `;
 
+const STYLES_BUTTONS = css`
+  button + button {
+    margin: 0 0 0 0.6rem;
+  }
+
+  p,
+  a {
+    color: ${Constants.colors.gray300};
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0 1rem;
+    line-height: 1.2px;
+  }
+`;
+
 export default function Home() {
   return (
     <main css={STYLES_CONTAINER}>
       <section css={STYLES_SECTION}>
         <div>
           <span css={STYLES_STATUS}>Beta</span>
+
           <div css={STYLES_TITLE_WRAPPER}>
             <h3 css={STYLES_TITLE}>A new day for customer support.</h3>
             <h3 css={[STYLES_TITLE, STYLES_SUBTITLE]}>
               Share knowledge <br /> Automate common tasks <br /> Better
               understand team productivity
             </h3>
+          </div>
+
+          <div css={STYLES_BUTTONS}>
+            <Button
+              type="secondary"
+              text="Get started"
+              iconRight={
+                <SVG.ChevronRight
+                  width="16px"
+                  height="16px"
+                  color={Constants.colors.gray300}
+                />
+              }
+            />
+            <Button text="Sign in" />
+            <p>
+              or, <a href="mailto:#">contact sales</a>
+            </p>
           </div>
         </div>
       </section>
