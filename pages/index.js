@@ -2,7 +2,9 @@ import * as Constants from "common/constants";
 import * as SVG from "common/svg";
 
 import Button from "components/Button";
+import ContactForm from "components/ContactForm";
 
+import { useState } from "react";
 import { css } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
@@ -49,24 +51,33 @@ const STYLES_SUBTITLE = css`
 `;
 
 const STYLES_BUTTONS = css`
+  margin: 0 0 2rem;
+
   button + button {
     margin: 0 0 0 0.6rem;
   }
 
-  p,
-  a {
+  p {
     color: ${Constants.colors.gray300};
     font-weight: 500;
-  }
-
-  p {
     font-size: 1.2rem;
     margin: 1.5rem 0 0 1.6rem;
     line-height: 1.2px;
+
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 `;
 
 export default function Home() {
+  const [isFormActive, setIsFormActive] = useState(false);
+
+  const handleContactClick = () => {
+    setIsFormActive(true);
+  };
+
   return (
     <main css={STYLES_CONTAINER}>
       <section css={STYLES_SECTION}>
@@ -83,7 +94,7 @@ export default function Home() {
 
           <div css={STYLES_BUTTONS}>
             <Button
-              type="secondary"
+              variant="secondary"
               text="Get started"
               iconRight={
                 <SVG.ChevronRight
@@ -95,9 +106,11 @@ export default function Home() {
             />
             <Button text="Sign in" />
             <p>
-              or, <a href="mailto:#">contact sales</a>
+              or, <span onClick={handleContactClick}>contact sales</span>
             </p>
           </div>
+
+          {isFormActive && <ContactForm />}
         </div>
       </section>
     </main>

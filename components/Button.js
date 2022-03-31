@@ -27,11 +27,12 @@ const STYLES_SECONDARY = css`
   background: linear-gradient(180deg, #fafafa 0%, #e8ecef 100%);
 `;
 
-const Button = ({ type = "primary", text, iconRight }) => (
+const Button = ({ type, variant = "primary", text, iconRight }) => (
   <button
+    type={type}
     css={[
       STYLES_BUTTON,
-      type === "secondary" ? STYLES_SECONDARY : STYLES_PRIMARY,
+      variant === "secondary" ? STYLES_SECONDARY : STYLES_PRIMARY,
     ]}
   >
     <span>{text}</span>
