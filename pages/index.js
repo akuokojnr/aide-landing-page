@@ -23,6 +23,31 @@ const STYLES_CONTAINER = css`
   }
 `;
 
+const KEYFRAMES_HIDE_BUTTONS = keyframes`
+  from { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+`;
+
+const KEYFRAMES_SHOW_FORM = keyframes`
+  from { 
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 100;
+  }
+`;
+
 const STYLES_SECTION = css`
   display: grid;
   grid-template-columns: 1fr;
@@ -32,6 +57,16 @@ const STYLES_SECTION = css`
 
   @media screen and (min-width: ${Constants.breakpoints.tablet}) {
     grid-template-columns: repeat(2, 2fr);
+  }
+
+  [data-form-active="true"] {
+    animation: ${KEYFRAMES_HIDE_BUTTONS} 0.8s cubic-bezier(0.23, 1, 0.32, 1.08)
+      both;
+  }
+
+  [data-show-form="true"] {
+    animation: ${KEYFRAMES_SHOW_FORM} 0.8s cubic-bezier(0.23, 1, 0.32, 1.08)
+      both;
   }
 `;
 
@@ -279,26 +314,27 @@ export default function Home() {
             </h3>
           </div>
 
-          <div css={STYLES_BUTTONS}>
-            <Button
-              variant="secondary"
-              text="Get started"
-              iconRight={
-                <SVG.ChevronRight
-                  width="16px"
-                  height="16px"
-                  color={Constants.colors.gray300}
-                />
-              }
-            />
-            <Button text="Sign in" />
-            <p>
-              or, <span onClick={handleContactClick}>contact sales</span>
-            </p>
+          <div style={{ position: "relative" }}>
+            <div css={STYLES_BUTTONS} data-form-active={isFormActive}>
+              <Button
+                variant="secondary"
+                text="Get started"
+                iconRight={
+                  <SVG.ChevronRight
+                    width="16px"
+                    height="16px"
+                    color={Constants.colors.gray300}
+                  />
+                }
+              />
+              <Button text="Sign in" />
+              <p>
+                or, <span onClick={handleContactClick}>contact sales</span>
+              </p>
+            </div>
+
+            <ContactForm isFormActive={isFormActive} />
           </div>
-
-          {isFormActive && <ContactForm />}
-
           <div css={STYLES_USES}>
             <p css={STYLES_USES_TITLE}>
               Save time, reduce costs and increase both customer <em>and</em>{" "}

@@ -6,6 +6,11 @@ import { css } from "@emotion/react";
 
 const STYLES_FORM = css`
   max-width: 35rem;
+  opacity: 0;
+  transform: translateY(4rem);
+  position: absolute;
+  top: 0;
+  z-index: -1;
 `;
 
 const STYLES_INPUT_BASE = css`
@@ -33,7 +38,7 @@ const STYLES_INPUT_WRAPPER = css`
   }
 `;
 
-const ContactForm = () => {
+const ContactForm = ({ isFormActive }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -42,11 +47,15 @@ const ContactForm = () => {
   };
 
   return (
-    <form css={STYLES_FORM} onSubmit={handleSubmit}>
+    <form
+      css={STYLES_FORM}
+      onSubmit={handleSubmit}
+      data-show-form={isFormActive}
+    >
       <textarea
         css={[STYLES_INPUT_BASE, STYLES_TEXTAREA]}
         placeholder="Tell us a bit about what you're working on..."
-        rows={4}
+        rows={3}
         name="message"
       />
       <div css={STYLES_INPUT_WRAPPER}>
