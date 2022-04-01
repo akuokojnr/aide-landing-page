@@ -1,5 +1,7 @@
 This is the landing page for Aide.
 
+![image](https://user-images.githubusercontent.com/31008944/161255636-49d7f302-d3bc-4166-9405-e4b1f0ddf604.png)
+
 ## Getting Started
 
 To run the development server:
