@@ -104,7 +104,7 @@ const STYLES_USE = css`
 
   span {
     display: inline-block;
-    margin-left: 1rem;
+    margin-left: 0.8rem;
   }
 
   svg {
@@ -156,8 +156,8 @@ const USES = [
     icon: <SVG.Hare />,
   },
   {
-    text: "Lots more, coming soon.",
-    icon: "+",
+    text: "+ Lots more, coming soon.",
+    icon: null,
   },
 ];
 
@@ -217,6 +217,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* (NOTE:daniel) Illustration goes */}
+        <div></div>
       </section>
     </main>
   );
