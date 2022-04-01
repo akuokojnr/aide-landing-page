@@ -6,7 +6,7 @@ import ContactForm from "components/ContactForm";
 import Hash from "components/Hash";
 
 import { useState } from "react";
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
   padding: 1.5rem;
@@ -34,6 +34,18 @@ const STYLES_SECTION = css`
   }
 `;
 
+const KEYFRAMES_STATUS = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
 const STYLES_STATUS = css`
   color: ${Constants.colors.gray};
   font-size: 1.2rem;
@@ -42,10 +54,25 @@ const STYLES_STATUS = css`
   border: 1.3px solid ${Constants.colors.gray};
   border-radius: 0.5rem;
   padding: 0.2rem 0.8rem;
+  animation: ${KEYFRAMES_STATUS} 1.2s ease both 0.8s;
+`;
+
+const KEYFRAMES_TITLE = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 `;
 
 const STYLES_TITLE_WRAPPER = css`
   padding: 3rem 0;
+  animation: ${KEYFRAMES_TITLE} 0.8s ease;
 `;
 
 const STYLES_TITLE = css`
@@ -64,8 +91,21 @@ const STYLES_SUBTITLE = css`
   -webkit-text-fill-color: transparent;
 `;
 
+const KEYFRAMES_BUTTON = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const STYLES_BUTTONS = css`
   margin: 0 0 2rem;
+  animation: ${KEYFRAMES_BUTTON} 0.8s linear 0.5s both;
 
   button + button {
     margin: 0 0 0 0.6rem;
