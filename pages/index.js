@@ -2,7 +2,9 @@ import * as Constants from "common/constants";
 import * as SVG from "common/svg";
 
 import Button from "components/Button";
+import ContactForm from "components/ContactForm";
 
+import { useState } from "react";
 import { css } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
@@ -49,24 +51,123 @@ const STYLES_SUBTITLE = css`
 `;
 
 const STYLES_BUTTONS = css`
+  margin: 0 0 2rem;
+
   button + button {
     margin: 0 0 0 0.6rem;
   }
 
-  p,
-  a {
+  p {
     color: ${Constants.colors.gray300};
     font-weight: 500;
-  }
-
-  p {
     font-size: 1.2rem;
     margin: 1.5rem 0 0 1.6rem;
     line-height: 1.2px;
+
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 `;
 
+const STYLES_USES_TITLE = css`
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+  color: ${Constants.colors.black100};
+`;
+
+const STYLES_USES = css`
+  margin: 11rem 0 0;
+  padding: 3rem 0;
+  border-top: 1px solid ${Constants.colors.gray400};
+`;
+
+const STYLES_USE_WRAPPER = css`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 2.4rem 0 0;
+`;
+
+const STYLES_USE = css`
+  background: ${Constants.colors.gray500};
+  border-radius: 10rem;
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  font-size: clamp(1.1rem, 0.4vw + 1rem, 1.4rem);
+  line-height: 1.8rem;
+  font-weight: 600;
+  color: ${Constants.colors.black200};
+
+  span {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  svg {
+    width: clamp(2rem, 0.5vw + 1.9rem, 2.4rem);
+    height: clamp(2rem, 0.5vw + 1.9rem, 2.4rem);
+  }
+
+  svg.bag {
+    width: clamp(1.2rem, 0.5vw + 1.1rem, 1.6rem);
+    height: clamp(1.4rem, 0.5vw + 1.3rem, 1.8rem);
+  }
+`;
+
+const USES = [
+  {
+    text: "Search across internal tools",
+    icon: <SVG.Sailboat />,
+  },
+  {
+    text: "Intelligent suggestions",
+    icon: <SVG.Stars />,
+  },
+  {
+    text: "Share text snippets and responses",
+    icon: <SVG.Snippet />,
+  },
+  {
+    text: "Codify knowledge with processes",
+    icon: <SVG.Puzzle />,
+  },
+  {
+    text: "Connect your knowledge base",
+    icon: <SVG.Library />,
+  },
+  {
+    text: "Easily visualize and understand data",
+    icon: <SVG.Kind />,
+  },
+  {
+    text: "E-commerce actions",
+    icon: <SVG.Bag className="bag" />,
+  },
+  {
+    text: "Works with the tools you already use",
+    icon: <SVG.Inbox />,
+  },
+  {
+    text: "Turn multi-step operations into a single click",
+    icon: <SVG.Hare />,
+  },
+  {
+    text: "Lots more, coming soon.",
+    icon: "+",
+  },
+];
+
 export default function Home() {
+  const [isFormActive, setIsFormActive] = useState(false);
+
+  const handleContactClick = () => {
+    setIsFormActive(true);
+  };
+
   return (
     <main css={STYLES_CONTAINER}>
       <section css={STYLES_SECTION}>
@@ -83,7 +184,7 @@ export default function Home() {
 
           <div css={STYLES_BUTTONS}>
             <Button
-              type="secondary"
+              variant="secondary"
               text="Get started"
               iconRight={
                 <SVG.ChevronRight
@@ -95,8 +196,25 @@ export default function Home() {
             />
             <Button text="Sign in" />
             <p>
-              or, <a href="mailto:#">contact sales</a>
+              or, <span onClick={handleContactClick}>contact sales</span>
             </p>
+          </div>
+
+          {isFormActive && <ContactForm />}
+
+          <div css={STYLES_USES}>
+            <p css={STYLES_USES_TITLE}>
+              Save time, reduce costs and increase both customer <em>and</em>{" "}
+              agent happiness.
+            </p>
+            <div css={STYLES_USE_WRAPPER}>
+              {USES.map(({ icon, text }, index) => (
+                <div key={`uses-${++index}`} css={STYLES_USE}>
+                  {icon}
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -349,10 +349,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@next/env@12.1.2":
-  "integrity" "sha512-A/P4ysmFScBFyu1ZV0Mr1Y89snyQhqGwsCrkEpK+itMF+y+pMqBoPVIyakUf4LXqGWJGiGFuIerihvSG70Ad8Q=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.1.2.tgz"
-  "version" "12.1.2"
+"@next/env@12.1.4":
+  "integrity" "sha512-7gQwotJDKnfMxxXd8xJ2vsX5AzyDxO3zou0+QOXX8/unypA6icw5+wf6A62yKZ6qQ4UZHHxS68pb6UV+wNneXg=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.1.4.tgz"
+  "version" "12.1.4"
 
 "@next/eslint-plugin-next@12.1.2":
   "integrity" "sha512-XqYRh6d98dpv2ynoOEC3VeNv99hxRGBuanRDKASfntdAZD9Zp4n+AugmNF0qwOQEHYgG1uvZW3A4Fi6Y/+kCQw=="
@@ -361,15 +361,15 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-linux-x64-gnu@12.1.2":
-  "integrity" "sha512-5N4QSRT60ikQqCU8iHfYZzlhg6MFTLsKhMTARmhn8wLtZfN9VVyTFwZrJQWjV64dZc4JFeXDANGao8fm55y6bw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.1.2.tgz"
-  "version" "12.1.2"
+"@next/swc-linux-x64-gnu@12.1.4":
+  "integrity" "sha512-nM+MA/frxlTLUKLJKorctdI20/ugfHRjVEEkcLp/58LGG7slNaP1E5d5dRA1yX6ISjPcQAkywas5VlGCg+uTvA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.1.4.tgz"
+  "version" "12.1.4"
 
-"@next/swc-linux-x64-musl@12.1.2":
-  "integrity" "sha512-b32F/xAgdYG4Pt0foFzhF+2uhvNxnEj7aJNp1R4EhZotdej2PzvFWcP/dGkc7MJl205pBz5oC3gHyILIIlW6XA=="
-  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.1.2.tgz"
-  "version" "12.1.2"
+"@next/swc-linux-x64-musl@12.1.4":
+  "integrity" "sha512-GoRHxkuW4u4yKw734B9SzxJwVdyEJosaZ62P7ifOwcujTxhgBt3y76V2nNUrsSuopcKI2ZTDjaa+2wd5zyeXbA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.1.4.tgz"
+  "version" "12.1.4"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -1543,29 +1543,28 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"next@>=10.2.0", "next@12.1.2":
-  "integrity" "sha512-JHPCsnFTBO0Z4SQxSYc611UA1WA+r/3y3Neg66AH5/gSO/oksfRnFw/zGX/FZ9+oOUHS9y3wJFawNpVYR2gJSQ=="
-  "resolved" "https://registry.npmjs.org/next/-/next-12.1.2.tgz"
-  "version" "12.1.2"
+"next@>=10.2.0", "next@12.1.4":
+  "integrity" "sha512-DA4g97BM4Z0nKtDvCTm58RxdvoQyYzeg0AeVbh0N4Y/D8ELrNu47lQeEgRGF8hV4eQ+Sal90zxrJQQG/mPQ8CQ=="
+  "resolved" "https://registry.npmjs.org/next/-/next-12.1.4.tgz"
+  "version" "12.1.4"
   dependencies:
-    "@next/env" "12.1.2"
+    "@next/env" "12.1.4"
     "caniuse-lite" "^1.0.30001283"
     "postcss" "8.4.5"
     "styled-jsx" "5.0.1"
-    "use-subscription" "1.5.1"
   optionalDependencies:
-    "@next/swc-android-arm-eabi" "12.1.2"
-    "@next/swc-android-arm64" "12.1.2"
-    "@next/swc-darwin-arm64" "12.1.2"
-    "@next/swc-darwin-x64" "12.1.2"
-    "@next/swc-linux-arm-gnueabihf" "12.1.2"
-    "@next/swc-linux-arm64-gnu" "12.1.2"
-    "@next/swc-linux-arm64-musl" "12.1.2"
-    "@next/swc-linux-x64-gnu" "12.1.2"
-    "@next/swc-linux-x64-musl" "12.1.2"
-    "@next/swc-win32-arm64-msvc" "12.1.2"
-    "@next/swc-win32-ia32-msvc" "12.1.2"
-    "@next/swc-win32-x64-msvc" "12.1.2"
+    "@next/swc-android-arm-eabi" "12.1.4"
+    "@next/swc-android-arm64" "12.1.4"
+    "@next/swc-darwin-arm64" "12.1.4"
+    "@next/swc-darwin-x64" "12.1.4"
+    "@next/swc-linux-arm-gnueabihf" "12.1.4"
+    "@next/swc-linux-arm64-gnu" "12.1.4"
+    "@next/swc-linux-arm64-musl" "12.1.4"
+    "@next/swc-linux-x64-gnu" "12.1.4"
+    "@next/swc-linux-x64-musl" "12.1.4"
+    "@next/swc-win32-arm64-msvc" "12.1.4"
+    "@next/swc-win32-ia32-msvc" "12.1.4"
+    "@next/swc-win32-x64-msvc" "12.1.4"
 
 "node-releases@^2.0.2":
   "integrity" "sha512-XxYDdcQ6eKqp/YjI+tb2C5WM2LgjnZrfYg4vgQt49EK268b6gYCHsBLrK2qvJo4FmCtqmKezb0WZFK4fkrZNsg=="
@@ -1768,7 +1767,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@^16.8.0 || ^17.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.0.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@18.0.0":
+"react@^17.0.2 || ^18.0.0-0", "react@^18.0.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@18.0.0":
   "integrity" "sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.0.0.tgz"
   "version" "18.0.0"
@@ -2037,13 +2036,6 @@
   "version" "4.4.1"
   dependencies:
     "punycode" "^2.1.0"
-
-"use-subscription@1.5.1":
-  "integrity" "sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA=="
-  "resolved" "https://registry.npmjs.org/use-subscription/-/use-subscription-1.5.1.tgz"
-  "version" "1.5.1"
-  dependencies:
-    "object-assign" "^4.1.1"
 
 "v8-compile-cache@^2.0.3":
   "integrity" "sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA=="
