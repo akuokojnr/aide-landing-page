@@ -9,7 +9,7 @@ import { useState } from "react";
 import { css, keyframes } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
-  padding: 1.5rem;
+  padding: 6rem 1.5rem 2rem;
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
@@ -20,6 +20,7 @@ const STYLES_CONTAINER = css`
   @media screen and (min-width: ${Constants.breakpoints.tablet}) {
     grid-template-columns: 3.8rem 1fr;
     grid-gap: 0 1.5rem;
+    padding: 1.5rem;
   }
 `;
 
