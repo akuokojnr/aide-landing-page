@@ -10,14 +10,17 @@ import { css } from "@emotion/react";
 const STYLES_CONTAINER = css`
   max-width: 1340px;
   margin-inline: auto;
-  padding: 0 1.5rem;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  min-height: 100vh;
 `;
 
 const STYLES_SECTION = css`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   align-items: center;
-  min-height: 100vh;
 `;
 
 const STYLES_STATUS = css`
@@ -115,6 +118,27 @@ const STYLES_USE = css`
   svg.bag {
     width: clamp(1.2rem, 0.5vw + 1.1rem, 1.6rem);
     height: clamp(1.4rem, 0.5vw + 1.3rem, 1.8rem);
+  }
+`;
+
+const STYLES_FOOTER = css`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 3rem;
+  padding-bottom: 2rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  a,
+  span {
+    font-size: clamp(1.1rem, 0.4vw + 1rem, 1.4rem);
+    line-height: 1.5rem;
+    font-weight: 500;
+    color: ${Constants.colors.gray600};
+    margin-top: 1rem;
   }
 `;
 
@@ -221,6 +245,13 @@ export default function Home() {
         {/* (NOTE:daniel) Illustration goes */}
         <div></div>
       </section>
+
+      <footer css={STYLES_FOOTER}>
+        <span>&copy;Aide</span>
+        <a href="#">Privacy & Terms</a>
+        <a href="#">Twitter</a>
+        <a href="#">Contact us</a>
+      </footer>
     </main>
   );
 }
