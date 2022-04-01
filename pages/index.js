@@ -108,8 +108,8 @@ const STYLES_USE = css`
   }
 
   svg {
-    width: clamp(2rem, 0.5vw + 1.9rem, 2.4rem);
-    height: clamp(2rem, 0.5vw + 1.9rem, 2.4rem);
+    width: clamp(1.6rem, 0.5vw + 1.5rem, 2rem);
+    height: clamp(1.6rem, 0.5vw + 1.5rem, 2rem);
   }
 
   svg.bag {
