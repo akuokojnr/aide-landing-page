@@ -6,12 +6,14 @@ const STYLES_HASH = css`
   grid-row: 1 / -1;
   width: 3.4rem;
   font-family: "Azeret Mono";
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   line-height: 0.8rem;
   font-weight: 400;
   max-height: calc(100vh - 3rem);
   overflow: hidden;
   display: none;
+  color: ${Constants.colors.gray400};
+  user-select: none;
 
   @media screen and (min-width: ${Constants.breakpoints.tablet}) {
     display: block;

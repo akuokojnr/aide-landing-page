@@ -12,6 +12,7 @@ export const colors = {
   gray400: "#ECECEC",
   gray500: "#F2F2F2",
   gray600: "#AFAFAF",
+  gray700: "#FBFCFD",
 };
 
 export const breakpoints = {
