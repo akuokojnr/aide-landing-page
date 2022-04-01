@@ -15,6 +15,7 @@ const STYLES_CONTAINER = css`
   grid-template-columns: 1fr;
   align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
 
   @media screen and (min-width: ${Constants.breakpoints.tablet}) {
     grid-template-columns: 3.8rem 1fr;
@@ -54,14 +55,13 @@ const STYLES_STATUS = css`
   border: 1.3px solid ${Constants.colors.gray};
   border-radius: 0.5rem;
   padding: 0.2rem 0.8rem;
-  animation: ${KEYFRAMES_STATUS} 1.2s ease both 0.8s;
+  animation: ${KEYFRAMES_STATUS} 1s ease both 0.8s;
 `;
 
 const KEYFRAMES_TITLE = keyframes`
   from {
     opacity: 0;
     transform: scale(0.9);
-
   }
 
   to {
@@ -147,7 +147,19 @@ const STYLES_USE_WRAPPER = css`
   margin: 2.4rem 0 0;
 `;
 
-const STYLES_USE = css`
+const KEYFRAMES_USES = keyframes`
+  from {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const STYLES_USE = ({ index }) => css`
   background: ${Constants.colors.gray500};
   border-radius: 10rem;
   padding: 0.5rem 1.2rem;
@@ -157,6 +169,7 @@ const STYLES_USE = css`
   line-height: 1.8rem;
   font-weight: 600;
   color: ${Constants.colors.black200};
+  animation: ${KEYFRAMES_USES} 0.6s ease ${index * 0.25}s both;
 
   svg + span {
     margin-left: 0.8rem;
@@ -293,7 +306,10 @@ export default function Home() {
             </p>
             <div css={STYLES_USE_WRAPPER}>
               {USES.map(({ icon, text }, index) => (
-                <div key={`uses-${++index}`} css={STYLES_USE}>
+                <div
+                  key={`uses-${++index}`}
+                  css={STYLES_USE({ index: ++index })}
+                >
                   {icon}
                   <span>{text}</span>
                 </div>
