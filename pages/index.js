@@ -3,24 +3,35 @@ import * as SVG from "common/svg";
 
 import Button from "components/Button";
 import ContactForm from "components/ContactForm";
+import Hash from "components/Hash";
 
 import { useState } from "react";
 import { css } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
-  max-width: 1340px;
-  margin-inline: auto;
   padding: 1.5rem;
   display: grid;
   grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
   align-items: center;
   min-height: 100vh;
+
+  @media screen and (min-width: ${Constants.breakpoints.tablet}) {
+    grid-template-columns: 3.8rem 1fr;
+    grid-gap: 0 1.5rem;
+  }
 `;
 
 const STYLES_SECTION = css`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: 1fr;
   align-items: center;
+  max-width: 1340px;
+  margin-inline: auto;
+
+  @media screen and (min-width: ${Constants.breakpoints.tablet}) {
+    grid-template-columns: repeat(2, 2fr);
+  }
 `;
 
 const STYLES_STATUS = css`
@@ -74,6 +85,8 @@ const STYLES_BUTTONS = css`
   }
 `;
 
+const STYLES_ILLUSTRATION_WRAPPER = css``;
+
 const STYLES_USES_TITLE = css`
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -122,11 +135,16 @@ const STYLES_USE = css`
 `;
 
 const STYLES_FOOTER = css`
+  grid-column: 1 / -1;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0 3rem;
   padding-bottom: 2rem;
+
+  @media screen and (min-width: ${Constants.breakpoints.tablet}) {
+    grid-column: 2 / -1;
+  }
 
   a {
     text-decoration: none;
@@ -194,6 +212,8 @@ export default function Home() {
 
   return (
     <main css={STYLES_CONTAINER}>
+      <Hash />
+
       <section css={STYLES_SECTION}>
         <div>
           <span css={STYLES_STATUS}>Beta</span>
@@ -243,7 +263,7 @@ export default function Home() {
         </div>
 
         {/* (NOTE:daniel) Illustration goes */}
-        <div></div>
+        <div css={STYLES_ILLUSTRATION_WRAPPER}></div>
       </section>
 
       <footer css={STYLES_FOOTER}>

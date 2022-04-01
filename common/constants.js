@@ -13,3 +13,7 @@ export const colors = {
   gray500: "#F2F2F2",
   gray600: "#AFAFAF",
 };
+
+export const breakpoints = {
+  tablet: "1200px",
+};
