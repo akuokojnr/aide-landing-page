@@ -102,9 +102,9 @@ const STYLES_USE = css`
   font-weight: 600;
   color: ${Constants.colors.black200};
 
-  span {
-    display: inline-block;
+  svg + span {
     margin-left: 0.8rem;
+    display: inline-block;
   }
 
   svg {
