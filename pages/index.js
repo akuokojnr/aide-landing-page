@@ -163,7 +163,6 @@ const STYLES_BUTTONS = css`
   p span {
     :hover {
       color: ${Constants.colors.black200};
-      font-weight: 600;
     }
   }
 `;
@@ -284,7 +283,6 @@ const STYLES_FOOTER = css`
 
     :hover {
       color: ${Constants.colors.black200};
-      font-weight: 600;
     }
   }
 
