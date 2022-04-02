@@ -17,9 +17,23 @@ const STYLES_BUTTON = css`
 `;
 
 const STYLES_PRIMARY = css`
-  border: 1px solid ${Constants.colors.gray200};
+  border: 1.5px solid ${Constants.colors.gray200};
   background: transparent;
   color: ${Constants.colors.gray300};
+  transition: all 0.5s ease;
+
+  :hover {
+    background: linear-gradient(to right, white, white) padding-box,
+      linear-gradient(45deg, #f83a3a 10%, #f13dd4 50%, #7000ff 90%) border-box;
+    border: 1.5px solid transparent;
+
+    span {
+      background: linear-gradient(45deg, #f83a3a 10%, #f13dd4 50%, #7000ff 90%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
 `;
 
 const KEYFRAMES_SECONDARY_BUTTON = keyframes`
@@ -37,7 +51,7 @@ const KEYFRAMES_SECONDARY_BUTTON = keyframes`
 `;
 
 const STYLES_SECONDARY = css`
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
   background: linear-gradient(45deg, #f83a3a 10%, #f13dd4 50%, #7000ff 90%);
   background-size: 400% 400%;
   animation: ${KEYFRAMES_SECONDARY_BUTTON} 12s ease infinite;
