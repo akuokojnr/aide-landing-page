@@ -161,6 +161,43 @@ const STYLES_BUTTONS = css`
   }
 `;
 
+const KEYFRAMES_CHEVRON = keyframes`
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(6px);
+  }
+`;
+
+const KEYFRAMES_ARROW = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+`;
+
+const STYLES_GET_STARTED = css`
+  [data-name="arrow-right"] {
+    opacity: 0;
+  }
+
+  :hover {
+    [data-name="chevron-right"] {
+      animation: ${KEYFRAMES_CHEVRON} 0.3s ease both;
+    }
+
+    [data-name="arrow-right"] {
+      animation: ${KEYFRAMES_ARROW} 0.3s ease both 0.05s;
+    }
+  }
+`;
+
 const STYLES_ILLUSTRATION_WRAPPER = css``;
 
 const STYLES_USES_TITLE = css`
@@ -320,13 +357,21 @@ export default function Home() {
               <Button
                 variant="secondary"
                 text="Get started"
-                iconRight={
-                  <SVG.ChevronRight
+                STYLES={STYLES_GET_STARTED}
+                iconRight={[
+                  <SVG.ArrowRight
+                    key="arrow-right"
+                    name="arrow-right"
                     width="16px"
                     height="16px"
-                    color={Constants.colors.gray300}
-                  />
-                }
+                  />,
+                  <SVG.ChevronRight
+                    key="chevron-right"
+                    name="chevron-right"
+                    width="16px"
+                    height="16px"
+                  />,
+                ]}
               />
               <Button text="Sign in" />
               <p>

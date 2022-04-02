@@ -57,6 +57,7 @@ const ContactForm = ({ isFormActive }) => {
         placeholder="Tell us a bit about what you're working on..."
         rows={3}
         name="message"
+        required
       />
       <div css={STYLES_INPUT_WRAPPER}>
         <input
@@ -64,6 +65,7 @@ const ContactForm = ({ isFormActive }) => {
           type="email"
           name="email"
           placeholder="Email address"
+          required
         />
         <Button type="submit" text="Submit" />
       </div>
