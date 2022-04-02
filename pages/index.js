@@ -159,6 +159,13 @@ const STYLES_BUTTONS = css`
       cursor: pointer;
     }
   }
+
+  p span {
+    :hover {
+      color: ${Constants.colors.black200};
+      font-weight: 600;
+    }
+  }
 `;
 
 const KEYFRAMES_CHEVRON = keyframes`
@@ -274,6 +281,11 @@ const STYLES_FOOTER = css`
 
   a {
     text-decoration: none;
+
+    :hover {
+      color: ${Constants.colors.black200};
+      font-weight: 600;
+    }
   }
 
   a,
