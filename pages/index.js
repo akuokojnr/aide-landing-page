@@ -4,6 +4,7 @@ import * as SVG from "common/svg";
 import Button from "components/Button";
 import ContactForm from "components/ContactForm";
 import Hash from "components/Hash";
+import SEO from "components/Seo";
 
 import { useState } from "react";
 import { css, keyframes } from "@emotion/react";
@@ -329,79 +330,83 @@ export default function Home() {
   };
 
   return (
-    <main css={STYLES_CONTAINER}>
-      <Hash />
+    <>
+      <main css={STYLES_CONTAINER}>
+        <Hash />
 
-      <section css={STYLES_SECTION}>
-        <div>
-          <span css={STYLES_STATUS}>Beta</span>
+        <section css={STYLES_SECTION}>
+          <div>
+            <span css={STYLES_STATUS}>Beta</span>
 
-          <div css={STYLES_TITLE_WRAPPER}>
-            <h3 css={STYLES_TITLE}>A new day for customer support.</h3>
-            <h3 css={[STYLES_TITLE, STYLES_SUBTITLE]}>
-              Share knowledge <br /> Automate common tasks <br /> Better
-              understand team productivity
-            </h3>
-          </div>
+            <div css={STYLES_TITLE_WRAPPER}>
+              <h3 css={STYLES_TITLE}>A new day for customer support.</h3>
+              <h3 css={[STYLES_TITLE, STYLES_SUBTITLE]}>
+                Share knowledge <br /> Automate common tasks <br /> Better
+                understand team productivity
+              </h3>
+            </div>
 
-          <div style={{ position: "relative" }}>
-            <div css={STYLES_BUTTONS} data-form-active={isFormActive}>
-              <Button
-                variant="secondary"
-                text="Get started"
-                STYLES={STYLES_GET_STARTED}
-                iconRight={[
-                  <SVG.ArrowRight
-                    key="arrow-right"
-                    name="arrow-right"
-                    width="16px"
-                    height="16px"
-                  />,
-                  <SVG.ChevronRight
-                    key="chevron-right"
-                    name="chevron-right"
-                    width="16px"
-                    height="16px"
-                  />,
-                ]}
-              />
-              <Button text="Sign in" />
-              <p>
-                or, <span onClick={handleContactClick}>contact sales</span>
+            <div style={{ position: "relative" }}>
+              <div css={STYLES_BUTTONS} data-form-active={isFormActive}>
+                <Button
+                  variant="secondary"
+                  text="Get started"
+                  STYLES={STYLES_GET_STARTED}
+                  iconRight={[
+                    <SVG.ArrowRight
+                      key="arrow-right"
+                      name="arrow-right"
+                      width="16px"
+                      height="16px"
+                    />,
+                    <SVG.ChevronRight
+                      key="chevron-right"
+                      name="chevron-right"
+                      width="16px"
+                      height="16px"
+                    />,
+                  ]}
+                />
+                <Button text="Sign in" />
+                <p>
+                  or, <span onClick={handleContactClick}>contact sales</span>
+                </p>
+              </div>
+
+              <ContactForm isFormActive={isFormActive} />
+            </div>
+            <div css={STYLES_USES}>
+              <p css={STYLES_USES_TITLE}>
+                Save time, reduce costs and increase both customer <em>and</em>{" "}
+                agent happiness.
               </p>
-            </div>
-
-            <ContactForm isFormActive={isFormActive} />
-          </div>
-          <div css={STYLES_USES}>
-            <p css={STYLES_USES_TITLE}>
-              Save time, reduce costs and increase both customer <em>and</em>{" "}
-              agent happiness.
-            </p>
-            <div css={STYLES_USE_WRAPPER}>
-              {USES.map(({ icon, text }, index) => (
-                <div
-                  key={`uses-${++index}`}
-                  css={STYLES_USE({ index: ++index })}
-                >
-                  {icon}
-                  <span>{text}</span>
-                </div>
-              ))}
+              <div css={STYLES_USE_WRAPPER}>
+                {USES.map(({ icon, text }, index) => (
+                  <div
+                    key={`uses-${++index}`}
+                    css={STYLES_USE({ index: ++index })}
+                  >
+                    {icon}
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* (NOTE:daniel) Illustration goes */}
-        <div css={STYLES_ILLUSTRATION_WRAPPER}></div>
-      </section>
+          {/* (NOTE:daniel) Illustration goes */}
+          <div css={STYLES_ILLUSTRATION_WRAPPER}></div>
+        </section>
 
-      <footer css={STYLES_FOOTER}>
-        <span>&copy;Aide</span>
-        <a href="#">Privacy & Terms</a>
-        <a href="#">Twitter</a>
-        <a href="#">Contact us</a>
-      </footer>
-    </main>
+        <footer css={STYLES_FOOTER}>
+          <span>&copy;Aide</span>
+          <a href="#">Privacy & Terms</a>
+          <a href="#">Twitter</a>
+          <a href="#">Contact us</a>
+        </footer>
+      </main>
+
+      <SEO title="Aide" />
+    </>
   );
 }
