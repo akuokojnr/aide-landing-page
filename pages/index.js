@@ -36,19 +36,6 @@ const KEYFRAMES_HIDE_BUTTONS = keyframes`
   }
 `;
 
-const KEYFRAMES_SHOW_FORM = keyframes`
-  from { 
-    opacity: 0;
-    transform: translateY(4rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 100;
-  }
-`;
-
 const STYLES_SECTION = css`
   display: grid;
   grid-template-columns: 1fr;
@@ -62,11 +49,6 @@ const STYLES_SECTION = css`
 
   [data-form-active="true"] {
     animation: ${KEYFRAMES_HIDE_BUTTONS} 0.8s cubic-bezier(0.23, 1, 0.32, 1.08)
-      both;
-  }
-
-  [data-show-form="true"] {
-    animation: ${KEYFRAMES_SHOW_FORM} 0.8s cubic-bezier(0.23, 1, 0.32, 1.08)
       both;
   }
 `;
