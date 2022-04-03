@@ -4,21 +4,36 @@ import * as SVG from "common/svg";
 import Button from "components/Button";
 import ContactForm from "components/ContactForm";
 import Hash from "components/Hash";
+import SEO from "components/Seo";
 
 import { useState } from "react";
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 
 const STYLES_CONTAINER = css`
-  padding: 1.5rem;
+  padding: 6rem 1.5rem 2rem;
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
   align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
 
   @media screen and (min-width: ${Constants.breakpoints.tablet}) {
     grid-template-columns: 3.8rem 1fr;
     grid-gap: 0 1.5rem;
+    padding: 1.5rem;
+  }
+`;
+
+const KEYFRAMES_HIDE_BUTTONS = keyframes`
+  from { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(2rem);
   }
 `;
 
@@ -32,6 +47,23 @@ const STYLES_SECTION = css`
   @media screen and (min-width: ${Constants.breakpoints.tablet}) {
     grid-template-columns: repeat(2, 2fr);
   }
+
+  [data-form-active="true"] {
+    animation: ${KEYFRAMES_HIDE_BUTTONS} 0.8s cubic-bezier(0.23, 1, 0.32, 1.08)
+      both;
+  }
+`;
+
+const KEYFRAMES_STATUS = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 `;
 
 const STYLES_STATUS = css`
@@ -42,10 +74,24 @@ const STYLES_STATUS = css`
   border: 1.3px solid ${Constants.colors.gray};
   border-radius: 0.5rem;
   padding: 0.2rem 0.8rem;
+  animation: ${KEYFRAMES_STATUS} 1s ease both 0.8s;
+`;
+
+const KEYFRAMES_TITLE = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 `;
 
 const STYLES_TITLE_WRAPPER = css`
   padding: 3rem 0;
+  animation: ${KEYFRAMES_TITLE} 0.8s ease;
 `;
 
 const STYLES_TITLE = css`
@@ -64,8 +110,21 @@ const STYLES_SUBTITLE = css`
   -webkit-text-fill-color: transparent;
 `;
 
+const KEYFRAMES_BUTTON = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const STYLES_BUTTONS = css`
   margin: 0 0 2rem;
+  animation: ${KEYFRAMES_BUTTON} 0.8s linear 0.5s both;
 
   button + button {
     margin: 0 0 0 0.6rem;
@@ -81,6 +140,49 @@ const STYLES_BUTTONS = css`
     span {
       text-decoration: underline;
       cursor: pointer;
+    }
+  }
+
+  p span {
+    :hover {
+      color: ${Constants.colors.black200};
+    }
+  }
+`;
+
+const KEYFRAMES_CHEVRON = keyframes`
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(6px);
+  }
+`;
+
+const KEYFRAMES_ARROW = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+`;
+
+const STYLES_GET_STARTED = css`
+  [data-name="arrow-right"] {
+    opacity: 0;
+  }
+
+  :hover {
+    [data-name="chevron-right"] {
+      animation: ${KEYFRAMES_CHEVRON} 0.3s ease both;
+    }
+
+    [data-name="arrow-right"] {
+      animation: ${KEYFRAMES_ARROW} 0.3s ease both 0.05s;
     }
   }
 `;
@@ -107,7 +209,19 @@ const STYLES_USE_WRAPPER = css`
   margin: 2.4rem 0 0;
 `;
 
-const STYLES_USE = css`
+const KEYFRAMES_USES = keyframes`
+  from {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const STYLES_USE = ({ index }) => css`
   background: ${Constants.colors.gray500};
   border-radius: 10rem;
   padding: 0.5rem 1.2rem;
@@ -117,6 +231,7 @@ const STYLES_USE = css`
   line-height: 1.8rem;
   font-weight: 600;
   color: ${Constants.colors.black200};
+  animation: ${KEYFRAMES_USES} 0.6s ease ${index * 0.25}s both;
 
   svg + span {
     margin-left: 0.8rem;
@@ -148,6 +263,10 @@ const STYLES_FOOTER = css`
 
   a {
     text-decoration: none;
+
+    :hover {
+      color: ${Constants.colors.black200};
+    }
   }
 
   a,
@@ -211,67 +330,83 @@ export default function Home() {
   };
 
   return (
-    <main css={STYLES_CONTAINER}>
-      <Hash />
+    <>
+      <main css={STYLES_CONTAINER}>
+        <Hash />
 
-      <section css={STYLES_SECTION}>
-        <div>
-          <span css={STYLES_STATUS}>Beta</span>
+        <section css={STYLES_SECTION}>
+          <div>
+            <span css={STYLES_STATUS}>Beta</span>
 
-          <div css={STYLES_TITLE_WRAPPER}>
-            <h3 css={STYLES_TITLE}>A new day for customer support.</h3>
-            <h3 css={[STYLES_TITLE, STYLES_SUBTITLE]}>
-              Share knowledge <br /> Automate common tasks <br /> Better
-              understand team productivity
-            </h3>
-          </div>
+            <div css={STYLES_TITLE_WRAPPER}>
+              <h3 css={STYLES_TITLE}>A new day for customer support.</h3>
+              <h3 css={[STYLES_TITLE, STYLES_SUBTITLE]}>
+                Share knowledge <br /> Automate common tasks <br /> Better
+                understand team productivity
+              </h3>
+            </div>
 
-          <div css={STYLES_BUTTONS}>
-            <Button
-              variant="secondary"
-              text="Get started"
-              iconRight={
-                <SVG.ChevronRight
-                  width="16px"
-                  height="16px"
-                  color={Constants.colors.gray300}
+            <div style={{ position: "relative" }}>
+              <div css={STYLES_BUTTONS} data-form-active={isFormActive}>
+                <Button
+                  variant="secondary"
+                  text="Get started"
+                  STYLES={STYLES_GET_STARTED}
+                  iconRight={[
+                    <SVG.ArrowRight
+                      key="arrow-right"
+                      name="arrow-right"
+                      width="16px"
+                      height="16px"
+                    />,
+                    <SVG.ChevronRight
+                      key="chevron-right"
+                      name="chevron-right"
+                      width="16px"
+                      height="16px"
+                    />,
+                  ]}
                 />
-              }
-            />
-            <Button text="Sign in" />
-            <p>
-              or, <span onClick={handleContactClick}>contact sales</span>
-            </p>
-          </div>
+                <Button text="Sign in" />
+                <p>
+                  or, <span onClick={handleContactClick}>contact sales</span>
+                </p>
+              </div>
 
-          {isFormActive && <ContactForm />}
-
-          <div css={STYLES_USES}>
-            <p css={STYLES_USES_TITLE}>
-              Save time, reduce costs and increase both customer <em>and</em>{" "}
-              agent happiness.
-            </p>
-            <div css={STYLES_USE_WRAPPER}>
-              {USES.map(({ icon, text }, index) => (
-                <div key={`uses-${++index}`} css={STYLES_USE}>
-                  {icon}
-                  <span>{text}</span>
-                </div>
-              ))}
+              <ContactForm isFormActive={isFormActive} />
+            </div>
+            <div css={STYLES_USES}>
+              <p css={STYLES_USES_TITLE}>
+                Save time, reduce costs and increase both customer <em>and</em>{" "}
+                agent happiness.
+              </p>
+              <div css={STYLES_USE_WRAPPER}>
+                {USES.map(({ icon, text }, index) => (
+                  <div
+                    key={`uses-${++index}`}
+                    css={STYLES_USE({ index: ++index })}
+                  >
+                    {icon}
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* (NOTE:daniel) Illustration goes */}
-        <div css={STYLES_ILLUSTRATION_WRAPPER}></div>
-      </section>
+          {/* (NOTE:daniel) Illustration goes */}
+          <div css={STYLES_ILLUSTRATION_WRAPPER}></div>
+        </section>
 
-      <footer css={STYLES_FOOTER}>
-        <span>&copy;Aide</span>
-        <a href="#">Privacy & Terms</a>
-        <a href="#">Twitter</a>
-        <a href="#">Contact us</a>
-      </footer>
-    </main>
+        <footer css={STYLES_FOOTER}>
+          <span>&copy;Aide</span>
+          <a href="#">Privacy & Terms</a>
+          <a href="#">Twitter</a>
+          <a href="#">Contact us</a>
+        </footer>
+      </main>
+
+      <SEO title="Aide" />
+    </>
   );
 }

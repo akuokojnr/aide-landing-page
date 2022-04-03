@@ -5,6 +5,12 @@ import { css } from "@emotion/react";
 // NOTE(daniel): minimal css reset
 /* prettier-ignore */
 const GlobalStyles = () => css`
+  @font-face {
+    font-family: Inter;
+    src: url("/fonts/Inter.ttf");
+    font-style: normal;
+  }
+  
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
