@@ -5,6 +5,7 @@ import Button from "components/Button";
 import ContactForm from "components/ContactForm";
 import Hash from "components/Hash";
 import SEO from "components/Seo";
+import Illustration from "components/Illustration";
 
 import { useState } from "react";
 import { css, keyframes } from "@emotion/react";
@@ -395,7 +396,9 @@ export default function Home() {
           </div>
 
           {/* (NOTE:daniel) Illustration goes */}
-          <div css={STYLES_ILLUSTRATION_WRAPPER}></div>
+          <div css={STYLES_ILLUSTRATION_WRAPPER}>
+            <Illustration />
+          </div>
         </section>
 
         <footer css={STYLES_FOOTER}>
