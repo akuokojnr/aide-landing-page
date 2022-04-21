@@ -1,8 +1,6 @@
 import * as THREE from "three";
 
-import { textPositions, vertices } from "./positions";
-
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { Canvas, useThree, useFrame, createPortal } from "@react-three/fiber";
 import { OrbitControls, Box, Text } from "@react-three/drei";
 import { useRef, useLayoutEffect, useState, useMemo } from "react";
 
@@ -13,51 +11,71 @@ const STYLES_CONTAINER = css`
   min-height: 70rem;
 `;
 
-const Char = ({ letter, ...rest }) => {
-  const ref = useRef();
+const TextCube = ({ textRef, children }) => {
+  const [boxGeom, setBoxGeom] = useState();
 
-  useFrame(({ camera }) => {
-    ref.current.quaternion.copy(camera.quaternion);
+  const boxRef = useRef();
+  const { camera } = useThree();
+
+  const [scene, target] = useMemo(() => {
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color();
+
+    const target = new THREE.WebGLMultipleRenderTargets(2048, 2048, 1);
+
+    return [scene, target];
+  }, []);
+
+  useFrame(({ gl }) => {
+    gl.setRenderTarget(target);
+    gl.render(scene, camera);
+    gl.setRenderTarget(null);
   });
 
-  return (
-    <Text ref={ref} {...rest}>
-      {letter}
-    </Text>
-  );
-};
-
-const Texts = () => {
-  const boxRef = useRef();
+  useFrame(({ camera }) => {
+    textRef.current.quaternion.copy(camera.quaternion);
+  });
 
   useLayoutEffect(() => {
-    console.log(boxRef);
+    if (!boxRef?.current) {
+      return;
+    }
+
+    setBoxGeom(boxRef.current.geometry);
   }, []);
 
   return (
     <>
+      {createPortal(children, scene)}
       <Box args={[4, 4, 4]} ref={boxRef}>
-        <meshBasicMaterial
-          color={["red", "yellow", "blue", "green", "yellow", "blue"]}
-          vertexColors
-        />
+        {Array.from({ length: 6 }, (_, idx) =>
+          idx == 0 ? (
+            <meshBasicMaterial
+              key={`texture-${idx}`}
+              attach={`material-${idx}`}
+              opacity={0.0}
+              transparent
+            />
+          ) : (
+            <meshBasicMaterial
+              map={target.texture[0]}
+              key={`texture-${idx}`}
+              attach={`material-${idx}`}
+              toneMapped={false}
+            />
+          )
+        )}
       </Box>
-
-      {textPositions.map((item, index) => (
-        <Char
-          key={`char-${item.letter}-${index}`}
-          color="black"
-          fontSize={0.8}
-          position={item.pos}
-          letter={item.letter}
-        />
-      ))}
+      <lineSegments>
+        <edgesGeometry args={[boxGeom]} />
+        <meshBasicMaterial color="black" />
+      </lineSegments>
     </>
   );
 };
 
 const Illustration = () => {
-  const controlsRef = useRef();
+  const textRef = useRef();
 
   return (
     <div css={[STYLES_CONTAINER]}>
@@ -66,10 +84,24 @@ const Illustration = () => {
         orthographic={true}
         camera={{ zoom: 60, position: [10, 10, 10] }}
       >
-        <OrbitControls enableZoom={false} ref={controlsRef} />
+        <OrbitControls enableZoom={false} />
         <primitive object={new THREE.AxesHelper(10)} />
 
-        <Texts controlsRef={controlsRef} />
+        <TextCube textRef={textRef}>
+          <Text
+            ref={textRef}
+            color="black"
+            fontSize={1.8}
+            letterSpacing={0.15}
+            textAlign="left"
+            characters="recursive"
+            maxWidth={10}
+            anchorX="center"
+            anchorY="middle"
+          >
+            recursive recursive recursive recursive recursive
+          </Text>
+        </TextCube>
       </Canvas>
     </div>
   );
