@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-import positions from "./text-positions";
+import { textPositions, vertices } from "./positions";
 
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls, Box, Text } from "@react-three/drei";
@@ -28,13 +28,22 @@ const Char = ({ letter, ...rest }) => {
 };
 
 const Texts = () => {
+  const boxRef = useRef();
+
+  useLayoutEffect(() => {
+    console.log(boxRef);
+  }, []);
+
   return (
     <>
-      <Box args={[4, 4, 4]}>
-        <meshBasicMaterial color="yellow" wireframe />
+      <Box args={[4, 4, 4]} ref={boxRef}>
+        <meshBasicMaterial
+          color={["red", "yellow", "blue", "green", "yellow", "blue"]}
+          vertexColors
+        />
       </Box>
 
-      {positions.map((item, index) => (
+      {textPositions.map((item, index) => (
         <Char
           key={`char-${item.letter}-${index}`}
           color="black"
