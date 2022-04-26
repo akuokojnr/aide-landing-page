@@ -11,10 +11,10 @@
   "dependencies": {
     "@emotion/babel-plugin": "^11.7.2",
     "@emotion/react": "^11.8.2",
+    "@react-spring/three": "^9.4.4",
     "@react-three/drei": "^9.4.2",
     "@react-three/fiber": "^8.0.11",
     "next": "12.1.4",
-    "random-words": "^1.1.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "three": "^0.139.2"

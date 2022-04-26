@@ -188,7 +188,9 @@ const STYLES_GET_STARTED = css`
   }
 `;
 
-const STYLES_ILLUSTRATION_WRAPPER = css``;
+const STYLES_ILLUSTRATION_WRAPPER = css`
+  height: 100%;
+`;
 
 const STYLES_USES_TITLE = css`
   font-size: 1.4rem;
